@@ -1,0 +1,18 @@
+spring:
+    application:
+        name: qing-api
+    profiles:
+        active: dev
+    datasource:
+        url: jdbc:mysql://localhost:3306/qing?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+        username: root
+        password:
+server:
+    port: 8081
+logging:
+    level:
+        root: info
+        com.macro.mall: debug
+redis:
+    expire:
+        common:86400
