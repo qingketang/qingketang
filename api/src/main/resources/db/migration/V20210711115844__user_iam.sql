@@ -1,0 +1,1 @@
+ALTER TABLE `user` ADD `iam` ENUM('teacher','student') NOT NULL DEFAULT 'student' COMMENT '我是' AFTER `name`;
