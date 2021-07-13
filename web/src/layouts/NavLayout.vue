@@ -45,6 +45,7 @@
 
 <script>
 import { ref } from 'vue';
+import { useAppStore } from 'store/app-store';
 
 export default {
   setup() {
@@ -64,7 +65,10 @@ export default {
       },
     ];
 
+    const store = useAppStore();
+
     return {
+      store,
       leftDrawerOpen,
       menuList,
       toggleLeftDrawer() {
