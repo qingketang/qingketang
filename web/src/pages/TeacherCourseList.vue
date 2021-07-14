@@ -5,11 +5,11 @@
     </div>
 
     <div class="q-gutter-x-sm q-mb-md">
-      <q-btn unelevated color="primary" label="创建课程" />
+      <q-btn unelevated color="primary" label="创建课程" @click='createDialogVisible = true' />
     </div>
 
     <div class="row q-col-gutter-md">
-      <div class="col-3" v-for="n in 6" :key="`course-${n}`">
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" v-for="n in 6" :key="`course-${n}`">
         <q-card flat bordered>
           <q-card-section class="bg-grey-3" style="min-height: 120px;">
             <div class="text-h6 text-grey-8">默认课程 {{ n }}</div>
@@ -26,17 +26,23 @@
       </div>
     </div>
 
+    <course-create-dialog v-model="createDialogVisible" />
+
   </q-page>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
+import CourseCreateDialog from 'components/CourseCreateDialog.vue';
 
 export default defineComponent({
   name: 'TeacherCourseList',
-  components: { },
+  components: { CourseCreateDialog },
   setup() {
-    return {};
+    const createDialogVisible = ref(false);
+    return {
+      createDialogVisible,
+    };
   }
 });
 </script>
