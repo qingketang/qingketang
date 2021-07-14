@@ -17,23 +17,21 @@
               <img :src=store.user.avatar>
             </q-avatar>
             <q-tooltip>账号</q-tooltip>
-            <q-menu auto-close>
-              <q-list dense style="min-width: 60px;">
-                <q-item>
-                  <q-item-section>
-                    <div>
-                      <q-avatar size="26px">
-                        <img :src=store.user.avatar>
-                      </q-avatar>
-                      <span class="ellipsis">{{ store.user.username }}</span>
-                    </div>
+            <q-menu>
+              <q-list style="width: 200px;">
+                <q-item v-close-popup="false" :clickable="false">
+                  <q-item-section avatar>
+                    <q-avatar>
+                      <img :src=store.user.avatar>
+                    </q-avatar>
                   </q-item-section>
+                  <q-item-section><q-item-label :lines="1">{{ store.user.username }}</q-item-label></q-item-section>
                 </q-item>
                 <q-separator />
-                <q-item clickable>
+                <q-item clickable v-close-popup>
                   <q-item-section>设置</q-item-section>
                 </q-item>
-                <q-item clickable @click='logout'>
+                <q-item clickable v-close-popup @click='logout'>
                   <q-item-section>退出</q-item-section>
                 </q-item>
               </q-list>

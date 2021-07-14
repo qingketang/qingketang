@@ -6,7 +6,7 @@ import {AuthUser} from './api-models';
 
 const exampleUser = {
   id: 1,
-  username: '南京B哥',
+  username: '南京B哥南京B哥南京B哥南京B哥',
   avatar: '/boy-avatar.png',
   token: 'a jwt token',
 } as AuthUser;
