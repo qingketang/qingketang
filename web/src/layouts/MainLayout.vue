@@ -2,8 +2,11 @@
   <q-layout view="hHh LpR fFf">
     <q-header bordered class="bg-white text-primary">
       <q-toolbar>
-        <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" v-if='store.isLoggedIn' />
-        <q-toolbar-title>轻课堂</q-toolbar-title>
+        <q-btn dense flat round icon="menu" color="grey-8" @click="toggleLeftDrawer" v-if='store.isLoggedIn' />
+        <q-toolbar-title style="line-height: 1;">
+          <img src="/static/img/logo.png" srcset="/static/img/logo.png 1x, /static/img/logo@2x.png 2x">
+        </q-toolbar-title>
+
         <div class="q-gutter-sm row items-center no-wrap" v-if='store.isLoggedIn'>
           <q-btn round dense flat icon="notifications">
             <q-badge color="red" text-color="white" floating>{{ store.notificationUnread }}</q-badge>
@@ -45,7 +48,7 @@
       v-model="leftDrawerOpen"
       side="left"
       bordered
-      class="bg-blue-grey-1"
+      class="grey-1"
       :width="240"
       v-if='store.isLoggedIn'
     >
