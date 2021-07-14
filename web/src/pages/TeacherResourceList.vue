@@ -1,6 +1,9 @@
 <template>
-  <q-page class="row items-center justify-evenly">
-    课件库
+  <q-page class="q-pa-md">
+    <div class="row q-mb-md">
+      <div class="col text-h5">课件库</div>
+    </div>
+
   </q-page>
 </template>
 

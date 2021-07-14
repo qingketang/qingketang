@@ -84,13 +84,13 @@ export default defineComponent({
     const leftDrawerOpen = ref(false);
     const menuList = [
       {
-        icon: 'inbox',
+        icon: 'class',
         label: '课程',
         to: { name: 'TeacherCourseList' },
         separator: false,
       },
       {
-        icon: 'send',
+        icon: 'video_library',
         label: '课件库',
         to: { name: 'TeacherResourceList' },
         separator: false,
