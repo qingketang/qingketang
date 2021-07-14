@@ -10,6 +10,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { configure } = require('quasar/wrappers');
 const path = require('path');
+const fs = require('fs');
 
 module.exports = configure(function (ctx) {
   return {
@@ -76,9 +77,8 @@ module.exports = configure(function (ctx) {
 
       // https://v2.quasar.dev/quasar-cli/handling-webpack
       // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
-      chainWebpack (chain) {
-        chain.resolve.alias
-          .set('store', path.resolve(__dirname, './src/store'))
+      chainWebpack (/* chain */) {
+        //
       },
     },
 

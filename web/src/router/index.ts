@@ -6,6 +6,8 @@ import {
   createWebHistory,
 } from 'vue-router';
 import routes from './routes';
+import { useAppStore } from 'src/store/app-store';
+import { authApi } from 'src/api/auth-api';
 
 /*
  * If not building with SSR mode, you can
@@ -31,6 +33,18 @@ export default route(function (/* { store, ssrContext } */) {
     history: createHistory(
       process.env.MODE === 'ssr' ? void 0 : process.env.VUE_ROUTER_BASE
     ),
+  });
+
+  Router.beforeEach(async (to) => {
+    const store = useAppStore();
+    if (to.meta.requiresAuth && !store.isLoggedIn) {
+      if (!store.authToken) {
+        return { name: 'Home' };
+      } else {
+        const user = await authApi.getUser(store.authToken);
+        store.login(user);
+      }
+    }
   });
 
   return Router;
