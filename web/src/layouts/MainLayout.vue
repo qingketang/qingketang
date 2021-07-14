@@ -2,18 +2,18 @@
   <q-layout view="hHh LpR fFf">
     <q-header bordered class="bg-primary text-white">
       <q-toolbar>
-        <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
+        <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" v-if='store.isLoggedIn' />
         <q-toolbar-title>轻课堂</q-toolbar-title>
-        <div class="q-gutter-sm row items-center no-wrap">
+        <div class="q-gutter-sm row items-center no-wrap" v-if='store.isLoggedIn'>
           <q-btn round dense flat icon="notifications">
             <q-badge color="red" text-color="white" floating>{{ store.notificationUnread }}</q-badge>
-            <q-tooltip>Notifications</q-tooltip>
+            <q-tooltip>通知</q-tooltip>
           </q-btn>
           <q-btn round flat>
             <q-avatar size="26px">
               <img :src=store.user.avatar>
             </q-avatar>
-            <q-tooltip>Account</q-tooltip>
+            <q-tooltip>账号</q-tooltip>
             <q-menu auto-close>
               <q-list dense style="min-width: 60px;">
                 <q-item>
@@ -47,6 +47,7 @@
       bordered
       class="bg-grey-2"
       :width="240"
+      v-if='store.isLoggedIn'
     >
       <q-scroll-area class="fit">
         <q-list>
