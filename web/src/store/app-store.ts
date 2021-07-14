@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { AppUser } from 'src/api/auth-api';
+import { AuthUser } from 'src/api/api-models';
 
 export const useAppStore = defineStore({
   id: 'appStore',
@@ -16,7 +16,7 @@ export const useAppStore = defineStore({
     };
   },
   getters: {
-    authToken(state: {user: AppUser}): string {
+    authToken(state: {user: AuthUser}): string {
       if (state.user.token && state.user.token.length > 0) {
         return state.user.token;
       }
@@ -28,7 +28,7 @@ export const useAppStore = defineStore({
     }
   },
   actions: {
-    login(user: AppUser) {
+    login(user: AuthUser) {
       this.isLoggedIn = true;
       this.user = user;
       localStorage.setItem('AuthToken', this.user.token);

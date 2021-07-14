@@ -1,25 +1,31 @@
-export interface AppUser {
-  id: number;
-  username: string;
-  avatar: string;
-  token: string;
-}
+/**
+ * 登录鉴权API
+ */
+
+import {AuthUser} from './api-models';
 
 const exampleUser = {
   id: 1,
   username: '南京B哥',
   avatar: '/boy-avatar.png',
   token: 'a jwt token',
-} as AppUser;
+} as AuthUser;
 
 export const authApi = {
-  login: (/* args */): Promise<AppUser> => {
+  /**
+   * 登录
+   */
+  login: (/* args */): Promise<AuthUser> => {
     return new Promise((resolve) => {
       return resolve(exampleUser);
     });
   },
 
-  getUser: (token: string): Promise<AppUser> =>  {
+  /**
+   * 通过 Token 获取用户信息
+   * @param token
+   */
+  getUser: (token: string): Promise<AuthUser> =>  {
     return new Promise((resolve) => {
       console.log('getUser', token);
       return resolve(exampleUser);
