@@ -1,6 +1,6 @@
 <template>
   <q-layout view="hHh LpR fFf">
-    <q-header bordered class="bg-primary text-white">
+    <q-header bordered class="bg-white text-primary">
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" v-if='store.isLoggedIn' />
         <q-toolbar-title>轻课堂</q-toolbar-title>
@@ -45,7 +45,7 @@
       v-model="leftDrawerOpen"
       side="left"
       bordered
-      class="bg-grey-2"
+      class="bg-blue-grey-1"
       :width="240"
       v-if='store.isLoggedIn'
     >
