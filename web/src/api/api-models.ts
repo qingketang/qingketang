@@ -9,3 +9,13 @@ export interface AuthUser {
   avatar: string;
   token: string;
 }
+
+export interface ClassCreateParams {
+  name: string;
+}
+
+export interface Class {
+  id: number;
+  no: string;
+  name: string;
+}

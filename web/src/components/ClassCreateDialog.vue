@@ -31,10 +31,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch, toRefs } from 'vue'
+import { defineComponent, ref, watch, toRefs } from 'vue';
+import { classApi} from 'src/api/class-api';
 
 export default defineComponent({
-  name: 'CourseCreateDialog',
+  name: 'ClassCreateDialog',
   props: {
     modelValue: {
       type: Boolean,
@@ -53,14 +54,12 @@ export default defineComponent({
 
     const name = ref('');
     const loading = ref(false);
-    const onSubmit = () => {
+    const onSubmit = async () => {
       loading.value = true;
-      console.log('course name:', name.value);
-      // 模拟 api post
-      setTimeout(() => {
-        visible.value = false;
-        loading.value = false;
-      }, 2000);
+      const created = await classApi.create({name: name.value});
+      console.log('class created:', created);
+      visible.value = false;
+      loading.value = false;
     };
 
     watch(visible, () => {

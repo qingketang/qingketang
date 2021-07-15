@@ -26,18 +26,18 @@
       </div>
     </div>
 
-    <course-create-dialog v-model="createDialogVisible" />
+    <class-create-dialog v-model="createDialogVisible" />
 
   </q-page>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import CourseCreateDialog from 'components/CourseCreateDialog.vue';
+import ClassCreateDialog from 'components/ClassCreateDialog.vue';
 
 export default defineComponent({
   name: 'TeacherCourseList',
-  components: { CourseCreateDialog },
+  components: { ClassCreateDialog },
   setup() {
     const createDialogVisible = ref(false);
     return {
