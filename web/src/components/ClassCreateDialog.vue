@@ -1,13 +1,10 @@
 <template>
-  <q-dialog v-model="visible">
+  <q-dialog ref="dialogRef" @hide="onDialogHide">
       <q-card style="min-width: 480px">
-        <q-form
-          @submit="onSubmit"
-        >
+        <q-form @submit="onSubmit">
           <q-card-section>
             <div class="text-h6">创建新课程</div>
           </q-card-section>
-
           <q-card-section class="q-pt-none">
             <q-input
               v-model="name"
@@ -19,9 +16,8 @@
               ]"
             />
           </q-card-section>
-
           <q-card-actions align="right" class="text-primary">
-            <q-btn flat label="取消" :disable='loading' v-close-popup />
+            <q-btn flat label="取消" :disable='loading' @click="onDialogCancel" />
             <q-btn flat label="创建" :loading="loading" type="submit" />
           </q-card-actions>
         </q-form>
@@ -31,45 +27,36 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch, toRefs } from 'vue';
+import { defineComponent, ref} from 'vue';
 import { classApi} from 'src/api/class-api';
+import { useDialogPluginComponent } from 'quasar';
 
 export default defineComponent({
   name: 'ClassCreateDialog',
   props: {
-    modelValue: {
-      type: Boolean,
-      default: false,
-    },
   },
-  emits: ['update:modelValue', 'created'],
-  setup(props, context) {
-    /**
-     * @see https://v3.cn.vuejs.org/guide/component-basics.html#%E5%9C%A8%E7%BB%84%E4%BB%B6%E4%B8%8A%E4%BD%BF%E7%94%A8-v-model
-     */
-    const visible = ref(false);
-    const {modelValue} = toRefs(props);
-    watch(modelValue, (modelValue) => visible.value = modelValue);
-    watch(visible, (visible) => context.emit('update:modelValue', visible));
+  emits: [
+    ...useDialogPluginComponent.emits,
+  ],
+  setup() {
+    const { dialogRef, onDialogHide, onDialogOK, onDialogCancel } = useDialogPluginComponent();
 
     const name = ref('');
     const loading = ref(false);
+
     const onSubmit = async () => {
       loading.value = true;
       const created = await classApi.create({name: name.value});
-      console.log('class created:', created);
-      visible.value = false;
       loading.value = false;
-    };
-
-    watch(visible, () => {
-      name.value = '';
-    });
+      onDialogOK(created);
+    }
 
     return {
-      visible,
-      name,
       loading,
+      name,
+      dialogRef,
+      onDialogHide,
+      onDialogCancel,
       onSubmit,
     }
   }
