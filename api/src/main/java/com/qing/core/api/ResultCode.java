@@ -1,24 +1,19 @@
 package com.qing.core.api;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.ToString;
 
+@ToString
+@AllArgsConstructor
 public enum ResultCode {
-    SUCCESS(200, "操作成功"),
-    FAILED(500, "服务器异常"),
-    UNAUTHORIZED(401, "暂未登录或token已经过期"),
-    FORBIDDEN(403, "无权限访问");
-    private long code;
-    private String message;
+    SUCCESS("200"),
+    SERVICE_EXCEPTION("400"),
+    UNAUTHORIZED("401"),
+    ACCESS_DENIED("403"),
+    FAILED("500"),
+    ;
 
-    private ResultCode(long code, String message) {
-        this.code = code;
-        this.message = message;
-    }
-
-    public long getCode() {
-        return code;
-    }
-
-    public String getMessage() {
-        return message;
-    }
+    @Getter
+    private final String code;
 }
