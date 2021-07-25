@@ -2,6 +2,8 @@ package com.qing.api;
 
 import com.qing.biz.user.entity.User;
 import com.qing.biz.user.service.UserService;
+import com.qing.core.base.BaseController;
+import com.qing.core.exception.ServiceException;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

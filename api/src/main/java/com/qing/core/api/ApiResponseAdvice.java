@@ -1,6 +1,6 @@
 package com.qing.core.api;
 
-import com.qing.api.BaseController;
+import com.qing.core.base.BaseController;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.server.ServerHttpRequest;

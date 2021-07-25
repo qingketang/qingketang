@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
@@ -14,16 +16,18 @@ import java.io.StringWriter;
 @Slf4j
 public class GlobalExceptionHandler {
     @ExceptionHandler({ServiceException.class})
-    public ResponseEntity<ExceptionResponse> handle(ServiceException serviceException) {
+    @ResponseBody
+    public ExceptionResponse handle(ServiceException serviceException) {
         ExceptionResponse error = new ExceptionResponse();
         error.setCode(serviceException.getCode());
         error.setMessage(serviceException.getMessage());
 
-        return new ResponseEntity<>(error, HttpStatus.OK);
+        return error;
     }
 
     @ExceptionHandler(Throwable.class)
-    public final ResponseEntity<ExceptionResponse> handle(Exception e) {
+    @ResponseBody
+    public final ExceptionResponse handle(Exception e) {
         log.error(e.getMessage());
         log.error(this.getStackTrace(e));
 
@@ -32,7 +36,7 @@ public class GlobalExceptionHandler {
         error.setMessage(e.getMessage());
         error.setDetail(e.getLocalizedMessage());
 
-        return new ResponseEntity<>(error, HttpStatus.OK);
+        return error;
     }
 
     private String getStackTrace(Throwable throwable) {

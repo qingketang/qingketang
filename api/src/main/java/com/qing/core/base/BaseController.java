@@ -1,4 +1,4 @@
-package com.qing.api;
+package com.qing.core.base;
 
 public class BaseController {
 }
