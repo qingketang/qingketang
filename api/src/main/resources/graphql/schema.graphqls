@@ -1,13 +1,15 @@
+scalar Long
+
 type Query {
-    classes: [Class]
-    class(id: ID!): Class
+    classrooms: [Classroom]
+    classroom(id: ID!): Classroom
 }
 
-type Class {
+type Classroom {
     id: ID!
     no: String!
     name: String!
-    userNum: Int!
-    createdAt: Int!
-    updatedAt: Int!
+    userNum: Long!
+    createdAt: Long!
+    updatedAt: Long!
 }
