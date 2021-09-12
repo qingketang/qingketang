@@ -1,0 +1,13 @@
+type Query {
+    classes: [Class]
+    class(id: ID!): Class
+}
+
+type Class {
+    id: ID!
+    no: String!
+    name: String!
+    userNum: Int!
+    createdAt: Int!
+    updatedAt: Int!
+}

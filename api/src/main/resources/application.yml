@@ -1,18 +1,22 @@
 spring:
     application:
-        name: qing-api
+        name: qingketang
     profiles:
         active: dev
     datasource:
-        url: jdbc:mysql://localhost:3306/qing?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+        url: jdbc:mysql://localhost:3306/qingketang?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
         username: root
         password:
+    graphql:
+        schema:
+            printer:
+                enabled: true
+        path: /graphql
 server:
     port: 8081
-logging:
-    level:
-        root: info
-        com.macro.mall: debug
-redis:
-    expire:
-        common:86400
+
+management:
+    endpoints:
+        web:
+            exposure:
+                include: health,metrics,info
