@@ -1,8 +1,11 @@
 scalar Long
 
 type Query {
-    classrooms: [Classroom]
     classroom(id: ID!): Classroom
+}
+
+type Mutation {
+    createClassroom(params: ClassroomCreateParams!): Classroom
 }
 
 type Classroom {
@@ -12,4 +15,9 @@ type Classroom {
     userNum: Long!
     createdAt: Long!
     updatedAt: Long!
+}
+
+input ClassroomCreateParams {
+    name: String!
+    no: String!
 }
