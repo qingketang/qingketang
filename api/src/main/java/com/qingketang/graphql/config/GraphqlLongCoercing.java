@@ -69,7 +69,7 @@ public class GraphqlLongCoercing implements Coercing<Long, Long> {
         BigInteger value = ((IntValue) input).getValue();
         if (value.compareTo(LONG_MIN) < 0 || value.compareTo(LONG_MAX) > 0) {
             throw new CoercingParseLiteralException(
-                    "Expected value to be in the Integer range but it was '" + value.toString() + "'"
+                    "Expected value to be in the Long range but it was '" + value.toString() + "'"
             );
         }
         return value.longValue();
