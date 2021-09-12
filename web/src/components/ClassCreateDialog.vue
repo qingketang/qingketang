@@ -1,13 +1,13 @@
 <template>
-  <q-dialog ref="dialogRef" @hide="onDialogHide">
+  <q-dialog ref="dialogRef" @hide="onDialogHide" @show="onDialogShow">
       <q-card style="min-width: 480px">
-        <q-form @submit="onSubmit">
+        <q-form ref="formRef" @submit="onSubmit">
           <q-card-section>
             <div class="text-h6">创建新课程</div>
           </q-card-section>
           <q-card-section class="q-pt-none">
             <q-input
-              v-model="name"
+              v-model="form.name"
               label="课程名称"
               lazy-rules
               :rules="[
@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref} from 'vue';
+import { defineComponent, ref, reactive, toRaw} from 'vue';
 import { classApi} from 'src/api/class-api';
 import { useDialogPluginComponent } from 'quasar';
 
@@ -41,23 +41,33 @@ export default defineComponent({
   setup() {
     const { dialogRef, onDialogHide, onDialogOK, onDialogCancel } = useDialogPluginComponent();
 
-    const name = ref('');
+    const formRef = ref(null);
+    const form = reactive({
+      name : '',
+    })
+
     const loading = ref(false);
+
+    const onDialogShow = () => {
+      (formRef.value as any).reset();
+    };
 
     const onSubmit = async () => {
       loading.value = true;
-      const created = await classApi.create({name: name.value});
+      const created = await classApi.create(toRaw(form));
       loading.value = false;
       onDialogOK(created);
     }
 
     return {
       loading,
-      name,
+      form,
+      formRef,
+      onSubmit,
       dialogRef,
+      onDialogShow,
       onDialogHide,
       onDialogCancel,
-      onSubmit,
     }
   }
 })
