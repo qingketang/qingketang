@@ -30,8 +30,8 @@ public class ClassroomController {
     }
 
     @MutationMapping
-    public Boolean deleteClassroom(@Argument Long id) {
+    public BooleanResult deleteClassroom(@Argument Long id) {
         classroomService.delete(id);
-        return true;
+        return new BooleanResult(true);
     }
 }
