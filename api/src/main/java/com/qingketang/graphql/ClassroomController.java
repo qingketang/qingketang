@@ -17,7 +17,6 @@ public class ClassroomController {
 
     public ClassroomController(ClassroomService classroomService) {
         this.classroomService = classroomService;
-
     }
 
     @QueryMapping
@@ -28,5 +27,11 @@ public class ClassroomController {
     @MutationMapping
     public ClassroomDTO createClassroom(@Argument ClassroomCreateParams params) {
         return classroomService.create(params);
+    }
+
+    @MutationMapping
+    public Boolean deleteClassroom(@Argument Long id) {
+        classroomService.delete(id);
+        return true;
     }
 }

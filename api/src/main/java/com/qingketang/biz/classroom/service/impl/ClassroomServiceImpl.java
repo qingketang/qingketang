@@ -1,11 +1,17 @@
 package com.qingketang.biz.classroom.service.impl;
 
+import cn.hutool.core.util.StrUtil;
 import com.qingketang.biz.classroom.dto.ClassroomCreateParams;
 import com.qingketang.biz.classroom.dto.ClassroomDTO;
+import com.qingketang.biz.classroom.dto.ClassroomSearchParams;
 import com.qingketang.biz.classroom.entity.Classroom;
+import com.qingketang.biz.classroom.entity.QClassroom;
 import com.qingketang.biz.classroom.mapper.ClassroomMapper;
 import com.qingketang.biz.classroom.repository.ClassroomRepository;
 import com.qingketang.biz.classroom.service.ClassroomService;
+import com.querydsl.core.BooleanBuilder;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -41,5 +47,21 @@ public class ClassroomServiceImpl implements ClassroomService {
     @Override
     public void delete(Long id) {
         repo.deleteById(id);
+    }
+
+    @Override
+    public Page<ClassroomDTO> search(ClassroomSearchParams params, Pageable pageable) {
+        var q = QClassroom.classroom;
+        var builder = new BooleanBuilder();
+
+        if (StrUtil.isNotEmpty(params.getNo())) {
+            builder.and(q.no.eq(params.getNo()));
+        }
+
+        if (StrUtil.isNotEmpty(params.getName())) {
+            builder.and(q.no.like(params.getName() + "%"));
+        }
+
+        return repo.findAll(builder, pageable).map(mapper::toDto);
     }
 }
