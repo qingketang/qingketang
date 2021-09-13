@@ -64,6 +64,19 @@ public class ClassroomServiceImpl implements ClassroomService {
     }
 
     @Override
+    public void changeName(Long id, String name) {
+        var violations = validator.validateValue(ClassroomCreateParams.class, "name", name);
+        if (!violations.isEmpty()) {
+            throw new AppException(ErrorCode.INVALID_ARGUMENT, violations);
+        }
+
+        var classroom = repo.findById(id).orElseThrow(() -> new AppException(ErrorCode.NOT_FOUND, "课堂不存在"));
+        classroom.setName(name);
+
+        repo.save(classroom);
+    }
+
+    @Override
     public void delete(Long id) {
         repo.deleteById(id);
     }

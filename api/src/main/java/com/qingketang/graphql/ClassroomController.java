@@ -34,4 +34,10 @@ public class ClassroomController {
         classroomService.delete(id);
         return new BooleanResult(true);
     }
+
+    @MutationMapping
+    public BooleanResult changeClassroomName(@Argument Long id, @Argument String name) {
+        classroomService.changeName(id, name);
+        return new BooleanResult(true);
+    }
 }

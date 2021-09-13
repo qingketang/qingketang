@@ -38,3 +38,20 @@ mutation DeleteClassroom($id: ID!) {
   "id": 1
 }
 ```
+
+## changeClassroomName
+
+```graphql
+mutation ChangeClassroomName($id: ID!, $name: String) {
+    changeClassroomName(id: $id, name: $name) {
+        ok
+    }
+}
+```
+
+```json
+{
+  "id": 1,
+  "name": "new name"
+}
+```

@@ -7,6 +7,7 @@ type Query {
 type Mutation {
     createClassroom(params: ClassroomCreateParams!): Classroom
     deleteClassroom(id: ID!): BooleanResult
+    changeClassroomName(id: ID!, name: String): BooleanResult
 }
 
 type BooleanResult {

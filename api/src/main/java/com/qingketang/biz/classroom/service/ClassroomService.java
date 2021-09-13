@@ -14,6 +14,8 @@ public interface ClassroomService {
 
     ClassroomDTO create(ClassroomCreateParams params);
 
+    void changeName(Long id, String name);
+
     void delete(Long id);
 
     Page<ClassroomDTO> search(ClassroomSearchParams params, Pageable pageable);
