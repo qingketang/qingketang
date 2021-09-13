@@ -24,5 +24,4 @@ type Classroom {
 
 input ClassroomCreateParams {
     name: String!
-    no: String!
 }
