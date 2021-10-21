@@ -49,6 +49,7 @@ export default defineComponent({
     const loading = ref(false);
 
     const onDialogShow = () => {
+      // eslint-disable-next-line
       (formRef.value as any).reset();
     };
 
