@@ -2,7 +2,7 @@
         "name": "轻课堂",
 	"folders": [
 		{
-			"path": "api"
+			"path": "server"
 		},
 		{
 			"path": "web"
