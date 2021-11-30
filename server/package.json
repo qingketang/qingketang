@@ -1,0 +1,27 @@
+{
+  "name": "qingketang-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "commonjs",
+  "repository": "git@github.com:qingketang/qingketang.git",
+  "author": "L1 L31 <wellming.li@howzhi.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon --watch src -e ts --exec node -r ts-node/register -r dotenv/config src/index.ts"
+  },
+  "devDependencies": {
+    "@tsconfig/node16": "^1.0.2",
+    "@types/koa": "^2.13.4",
+    "@types/koa__router": "^8.0.10",
+    "@types/node": "^16.11.11",
+    "nodemon": "^2.0.15",
+    "ts-node": "^10.4.0",
+    "tslib": "^2.3.1",
+    "typescript": "^4.5.2"
+  },
+  "dependencies": {
+    "@koa/router": "^10.1.1",
+    "dotenv": "^10.0.0",
+    "koa": "^2.13.4"
+  }
+}
