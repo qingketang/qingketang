@@ -1466,6 +1466,16 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
+typedi@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.npm.taobao.org/typedi/download/typedi-0.10.0.tgz#e8f9a5ee100b84addbdfb57fe90d8d9ed2a21dea"
+  integrity sha1-6Pml7hALhK3b37V/6Q2NntKiHeo=
+
+typeorm-typedi-extensions@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.nlark.com/typeorm-typedi-extensions/download/typeorm-typedi-extensions-0.4.1.tgz#e62e3c8f30021c9b8f258e068d38723dbd64de1d"
+  integrity sha1-5i48jzACHJuPJY4GjThyPb1k3h0=
+
 typeorm@^0.2.41:
   version "0.2.41"
   resolved "https://registry.npmmirror.com/typeorm/download/typeorm-0.2.41.tgz#88758101ac158dc0a0a903d70eaacea2974281cc"

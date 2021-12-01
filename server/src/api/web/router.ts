@@ -1,11 +1,14 @@
 import Router from "@koa/router";
+import { Container} from 'typedi';
 
-import * as dft from "./controller/default-controller";
+import {WebDefaultController} from "./controller/WebDefaultController";
+
+const defaultCtrl = Container.get(WebDefaultController);
 
 const router = new Router({
     prefix: '/web',
 });
 
-router.get('/', dft.index);
+router.get('/', defaultCtrl.index);
 
 export  {router };

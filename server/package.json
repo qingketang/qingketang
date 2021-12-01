@@ -25,6 +25,8 @@
     "koa": "^2.13.4",
     "mysql2": "^2.3.3",
     "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.2.41"
+    "typedi": "^0.10.0",
+    "typeorm": "^0.2.41",
+    "typeorm-typedi-extensions": "^0.4.1"
   }
 }
